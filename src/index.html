@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pokedex Builder</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <div class="pokedex-dashboard" id="pokedex-dashboard">
+    <header class="poke-nav">
+      <div class="header-logo">
+        <img src="https://images5.alphacoders.com/481/481903.png" style="max-width:130px;" />
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="container-fluid">
+
+        <div class="pokemon-search-bar">
+          <input type="text" placeholder="Search your pokemon" id="search-pokemon"/>
+        </div>
+
+        <div class="add-new-pokemon" id="addPokemon">
+          <button id="addPokemon">Create a new pokemon</button>
+        </div>
+
+        <div class="row pokemon-listing" id="pokemonList">
+
+        </div>
+        <div class="pokemon-detail-modal" id="pokemon-detail-modal"></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES -->
+    <script id="pokemon-template" type="text/template">
+    {{#pokemons}}
+    <div class="col-sm-3 clearfix">
+       <div class="pokemon-card" data-id="{{id}}">
+         <div class="pokemon-image" style="background-image:url(https://www.clipartmax.com/png/middle/30-306911_pokeball-pokeball-png.png)">
+         </div>
+         
+         <div class="pokemon-name">
+           <h2>{{name.english}}</h2>
+         </div>
+   
+       </div>
+     </div>
+         {{/pokemons}}
+  </script>
+
+    <script id="pokemon-details" type="text/template">
+    <div class="pokemon-detail-content">
+      <button type="button" class="close" id="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    {{#pokemon}}
+        <div class="pokemon-attribute-container">
+            <div class="rank">
+                <h3>RANK #{{id}}</h3>
+            </div>
+            <div class="pokemon-attr">
+                <span class="poke-key">Name</span>
+                <input class="poke-value" type="text" value={{name.english}} name='name' />
+            </div>
+            <div class="pokemon-attr">
+                <span class="poke-key">Type</span>
+                <input class="poke-value" type="text" value={{type}} name='name' />
+            </div>
+            <div class="pokemon-attr">
+                <span class="poke-key">Attack</span>
+                <input class="poke-value" type="text" value={{base.Attack}} name='name' />
+            </div>
+            <div class="pokemon-attr">
+
+                <span class="poke-key">Defense</span>
+                <input class="poke-value" type="text" value={{base.Defense}} name='name' />
+
+            </div>
+        </div>
+     {{/pokemon}}
+     <button class='update-btn' id="updatePokemon">Update Pokemon</button>
+    </div>
+   </script>
+
+    <div class="pokemon-detail-modal" id="pokemon-create-modal">
+      <div id="pokemon-create" class="create-new-pokemon">
+        <div class="pokemon-detail-content">
+          <button type="button" class="close" id="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="pokemon-attribute-container">
+            <div class="pokemon-add-row">
+              <button class="add-row"><i class="fa fa-plus" aria-hidden="true"></i>Add Attribute</button>
+            </div>
+          </div>
+          <button class='update-btn' id="savePokemon">Save Pokemon</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pokemon-attr new-attr d-none">
+        <span contenteditable="true" class="poke-key">Enter a new ability</span>
+        <input class="poke-value" type="text" value=""  placeholder="Enter a new value for the ability"/>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+    crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+</body>
+
+</html>
